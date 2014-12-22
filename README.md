@@ -1,5 +1,5 @@
-# Intranet 
-https://travis-ci.org/khwerhahn/intranet.svg?branch=master
+ # Intranet 
+[![Build Status](https://travis-ci.org/khwerhahn/intranet.svg?branch=master)](https://travis-ci.org/khwerhahn/intranet)
 
 *Simple intranet for companies*
 
