@@ -1,9 +1,9 @@
-# H1 Intranet
+# Intranet
 
 *Simple intranet for companies*
 
 
-# H2 Features
+## Features
 1. Slag company Chat
 2. Jira Roadmap
 3. Employee List
