@@ -3,14 +3,18 @@
 
 *Simple intranet for companies*
 
+Documentation will be available [here](http://khwerhahn.github.io/intranet/)
+
+_Anyone who would like to join is more than welcome!_
+
 
 ## Features
-1. Slag company Chat
+1. Slag company Chat 
 
- Via slag api
+ Use the [slag API](https://api.slack.com/) to connect to the "general" chat of the company 
 2. Jira Roadmap
 
- Via jira api
+ Use the [jira API](https://docs.atlassian.com/jira/REST/latest/#id160865) to connect to the roadmap of the company, so everyone is up to speed on the releases
 3. Employee List
 
  Self explanitory
