@@ -2,15 +2,15 @@
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav navbar-default">
         <li class="sidebar-brand">
-            <a href="">
+            <a href="/">
                 Company.com
             </a>
         </li>
         <li>
-            <a href="#">Dashboard</a>
+            <a href="/">Dashboard</a>
         </li>
         <li>
-            <a href="#">Anouncements</a>
+            <a href="/anouncements">Anouncements</a>
         </li>
         <li>
             <a href="#">Readings</a>
@@ -24,11 +24,13 @@
     </ul>
 </div>
 
-<div id="loginwithbarzahlen-container">
-  <a class="btn btn-danger" href="" ng-click="loginOauth('google')">
+<div id="loginwithbarzahlen-container" ng-show="isLoggedIn()">
+  <a class="btn btn-danger" href="/login" >
             Login with Company<div class="ripple-wrapper"></div>
   </a>
 </div>
+
+
 <!-- /#sidebar-wrapper -->
 
 

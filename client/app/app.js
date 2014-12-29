@@ -7,7 +7,10 @@ angular.module('intranetApp', [
   'ngRoute',
   'btford.socket-io',
   'ui.bootstrap',
-  'ngMaterial'
+  'ngMaterial',
+  'angularMoment',
+  'angularUtils.directives.dirPagination',
+  'textAngular'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

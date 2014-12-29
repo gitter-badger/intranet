@@ -13,7 +13,10 @@ var UserSchema = new Schema({
     default: 'user'
   },
   hashedPassword: String,
-  birthday: { type: Date, default: new Date() },
+  dob: { type: Date, default: new Date() },
+  joinedOn: { type: Date, default: new Date() },
+  leftOn: { type: Date },
+  position: { type: String },
   provider: String,
   salt: String,
   google: {},

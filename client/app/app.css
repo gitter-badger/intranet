@@ -57,10 +57,10 @@
 
 #wrapper {
     padding-left: 0;
-    -webkit-transition: all 0.5s ease;
+    /*-webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease;*/
 }
 
 #wrapper.toggled {
@@ -145,6 +145,17 @@
     background: none;
 }
 
+#actionbutton-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 80px;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    z-index: 10000;
+}
+
 
 
 @media(min-width:768px) {
@@ -173,4 +184,14 @@
         margin-right: 0;
     }
 
+}
+
+/* Dashboard Styles */
+
+.dashboard-list-separator {
+    width: 100%;
+    content: "";
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    float: right;
+    margin-bottom: 5px;
 }

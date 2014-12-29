@@ -11,22 +11,38 @@
     <div class="row">
         <div class="col-md-4">
           
-            <div class="panel panel-danger">
+            <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Today</h3>
+                    <h3 class="panel-title">Anouncements <div class="pull-right"><div class="pill"> {{ totalanouncements }}</div></div></h3>
+
                 </div>
                 <div class="panel-body">
-                    Panel content
+
+                    <div class="list-group" ng-show="anouncements.length > 0" style="margin-bottom: 0px">
+                        <div class="list-group-item" ng-repeat="anouncement in anouncements">
+                            <div class="row-content" ng-click="readAnouncement(anouncement.slug)" style="min-height:10px">
+                                <div class="least-content"><span am-time-ago="anouncement.created_at"></span></div>
+                                <h4 class="list-group-item-heading" style="font-size:18px">{{ anouncement.title }}</h4>
+                                
+                            </div>
+                            <div class="dashboard-list-separator" ng-show="showSeparatorAnouncements($index)"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    <p class="text-center" ng-show="anouncements.length == 0">Nothing to read</p>
+                    
+
                 </div>
             </div>
 
-        </div> 
+        </div>
 
         <div class="col-md-4">
           
             <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Birthdays</h3>
+                    <h3 class="panel-title">Reading List </h3>
                 </div>
                 <div class="panel-body">
                     Panel content
@@ -39,10 +55,25 @@
           
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Reading List</h3>
+                    <h3 class="panel-title">Birthdays</h3>
                 </div>
                 <div class="panel-body">
-                    Panel content
+
+                    <div class="list-group" ng-show="birthdays.length > 0" style="margin-bottom: 0px">
+                        <div class="list-group-item" ng-repeat="birthday in birthdays">
+                            <div class="row-content" ng-click="readbirthday(birthday.slug)" style="min-height:10px">
+                                <div class="least-content"><span am-time-ago="birthday.dob"></span></div>
+                                <h4 class="list-group-item-heading" style="font-size:18px">{{ birthday.name }}</h4>
+                                
+                            </div>
+                            <div class="dashboard-list-separator" ng-show="showSeparatorbirthdays($index)"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    <p class="text-center" ng-show="birthdays.length == 0">No cake today =( </p>
+                    
+
                 </div>
             </div>
 
@@ -53,18 +84,7 @@
     <div class="row">
         
 
-        <div class="col-md-4">
-          
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Anouncements</h3>
-                </div>
-                <div class="panel-body">
-                    Panel content
-                </div>
-            </div>
-
-        </div>
+        
  
 
     </div>

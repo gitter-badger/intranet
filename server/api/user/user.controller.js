@@ -4,6 +4,7 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
+var moment = require('moment');
 
 var validationError = function(res, err) {
   return res.json(422, err);
@@ -90,6 +91,23 @@ exports.me = function(req, res, next) {
     if (err) return next(err);
     if (!user) return res.json(401);
     res.json(user);
+  });
+};
+
+// Birtdhays
+exports.birthdays = function(req, res, next) {
+  var todayStart = moment().startOf('day');
+  var todayEnd = moment().endOf('day');
+
+  User
+  .find()
+  .where('dob').gt(todayStart).lt(todayEnd)
+  .limit(3)
+  .sort('dob')
+  .select('name dob')
+  .exec(function(err, users){
+    if(err) return res.send(500, err);
+    res.json(200, users);
   });
 };
 

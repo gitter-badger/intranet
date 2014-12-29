@@ -17,6 +17,13 @@ angular.module('intranetApp')
         params: {
           id:'me'
         }
-      }
+      },
+      getbirthdays: {
+        method: 'GET',
+        params: {
+          id:'birthdays'
+        },
+        isArray: true
+      },
 	  });
   });
