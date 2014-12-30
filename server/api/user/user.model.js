@@ -14,6 +14,8 @@ var UserSchema = new Schema({
   },
   hashedPassword: String,
   dob: { type: Date, default: new Date() },
+  birthmonth: { type: Number },
+  birthday: { type: Number },
   joinedOn: { type: Date, default: new Date() },
   leftOn: { type: Date },
   position: { type: String },
@@ -46,6 +48,7 @@ UserSchema
       'role': this.role
     };
   });
+ 
 
 // Non-sensitive info we'll be putting in the token
 UserSchema
@@ -101,6 +104,10 @@ var validatePresenceOf = function(value) {
  */
 UserSchema
   .pre('save', function(next) {
+
+    this.birthmonth = this.dob.getMonth() + 1;
+    this.birthday = this.dob.getDate()
+
     if (!this.isNew) return next();
 
     if (!validatePresenceOf(this.hashedPassword) && authTypes.indexOf(this.provider) === -1)

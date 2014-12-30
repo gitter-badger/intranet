@@ -96,13 +96,17 @@ exports.me = function(req, res, next) {
 
 // Birtdhays
 exports.birthdays = function(req, res, next) {
-  var todayStart = moment().startOf('day');
-  var todayEnd = moment().endOf('day');
+
+  var dayOfMonth = moment().date();
+  var monthOfYear = moment().month() + 1;
+
+  User.find().exec(function(err, users){
+    console.log(users);
+  })
 
   User
-  .find()
-  .where('dob').gt(todayStart).lt(todayEnd)
-  .limit(3)
+  .where('birthday').equals(dayOfMonth)
+  .where('birthmonth').equals(monthOfYear)
   .sort('dob')
   .select('name dob')
   .exec(function(err, users){
