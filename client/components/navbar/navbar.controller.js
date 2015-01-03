@@ -3,8 +3,14 @@
 angular.module('intranetApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth, $timeout, $mdBottomSheet) {
     $scope.menu = [{
-      'title': 'Home',
+      'title': 'Dashboard',
       'link': '/'
+    },{
+      'title': 'Anouncements',
+      'link': '/anouncements'
+    },{
+      'title': 'Team',
+      'link': '/team'
     }];
 
     $scope.isCollapsed = true;

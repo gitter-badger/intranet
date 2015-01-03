@@ -25,5 +25,12 @@ angular.module('intranetApp')
         },
         isArray: true
       },
+      getteam: {
+        method: 'GET',
+        params: {
+          id:'team'
+        },
+        isArray: true
+      }
 	  });
   });

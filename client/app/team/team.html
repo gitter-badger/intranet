@@ -1,0 +1,28 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div id="page-content-wrapper">
+
+	<div class="row">
+		<div class="col-md-4" ng-repeat="member in members">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-4 col-sm-4 col-md-4">
+							<img ng-src="{{member.img}}" alt="..." class="img-rounded" style="max-width:80px;width:99%">
+						</div>
+						<div class="col-xs-8 col-sm-8 col-md-8">
+							<ul class="list-group">
+								<li class="list-group-item"><span class="text-info">First name:</span> {{ member.firstname }}</li>
+								<li class="list-group-item"><span class="text-info">Surname:</span> {{ member.surname }}</li>
+								<li class="list-group-item">&nbsp</li>
+								<li class="list-group-item"><span class="text-warning">Department:</span> {{ member.department }}</li>
+								<li class="list-group-item"><span class="text-warning">Position:</span> {{ member.position }}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

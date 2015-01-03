@@ -6,7 +6,8 @@ var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
-  name: String,
+  firstname: String,
+  surname: String,
   email: { type: String, lowercase: true },
   role: {
     type: String,
@@ -18,7 +19,9 @@ var UserSchema = new Schema({
   birthday: { type: Number },
   joinedOn: { type: Date, default: new Date() },
   leftOn: { type: Date },
-  position: { type: String },
+  position: { type: String, default: 'Newbie' },
+  department: { type: String, default: 'Refreshments and Beverages' },
+  img: { type: String, default: 'http://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png'},
   provider: String,
   salt: String,
   google: {},
@@ -51,6 +54,7 @@ UserSchema
  
 
 // Non-sensitive info we'll be putting in the token
+
 UserSchema
   .virtual('token')
   .get(function() {

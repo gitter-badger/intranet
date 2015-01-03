@@ -73,8 +73,19 @@ module.exports = function(config) {
     browsers: ['PhantomJS'],
 
 
+    
+
+    coverageReporter: {
+      type: 'text-summary',
+      dir: 'coverage/'
+    },
+
+    reporters: ['spec','progress', 'coverage'],
+
+    colors: true,
+
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: false,
   });
 };

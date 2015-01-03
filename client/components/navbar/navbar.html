@@ -1,26 +1,16 @@
 <!-- Sidebar -->
-<div id="sidebar-wrapper">
+<div id="sidebar-wrapper" ng-controller="NavbarCtrl">
     <ul class="sidebar-nav navbar-default">
         <li class="sidebar-brand">
             <a href="/">
                 Company.com
             </a>
         </li>
-        <li>
-            <a href="/">Dashboard</a>
+
+        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+            <a ng-href="{{item.link}}">{{item.title}}</a>
         </li>
-        <li>
-            <a href="/anouncements">Anouncements</a>
-        </li>
-        <li>
-            <a href="#">Readings</a>
-        </li>
-        <li>
-            <a href="#">Team</a>
-        </li>
-        <li>
-            <a href="#">Roadmap</a>
-        </li>
+        <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li> 
     </ul>
 </div>
 

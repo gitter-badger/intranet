@@ -100,20 +100,27 @@ exports.birthdays = function(req, res, next) {
   var dayOfMonth = moment().date();
   var monthOfYear = moment().month() + 1;
 
-  User.find().exec(function(err, users){
-    console.log(users);
-  })
-
   User
   .where('birthday').equals(dayOfMonth)
   .where('birthmonth').equals(monthOfYear)
   .sort('dob')
-  .select('name dob')
+  .select('firstname lastname dob')
   .exec(function(err, users){
     if(err) return res.send(500, err);
     res.json(200, users);
   });
 };
+
+exports.team = function(req, res, next) {
+
+  User.find({}, '-salt -hashedPassword', function (err, users) {
+    if(err) return res.send(500, err);
+    res.json(200, users);
+  });
+  
+};
+
+
 
 /**
  * Authentication callback

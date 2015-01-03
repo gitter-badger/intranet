@@ -33,15 +33,26 @@ Anouncement.find({}).remove(function() {
 User.find({}).remove(function() {
   User.create({
     provider: 'local',
-    name: 'Test User',
+    firstname: 'Chuck',
+    surname: 'Testa',
     email: 'test@test.com',
     password: 'test'
   }, {
     provider: 'local',
     role: 'admin',
-    name: 'Admin',
+    firstname: 'Admin',
+    surname: '',
     email: 'admin@admin.com',
     password: 'admin'
+  },{
+    provider: 'local',
+    role: 'user',
+    surname: 'Vader',
+    firstname: 'Darth',
+    email: 'darth@deathstar.com',
+    password: 'stormtrooper123',
+    department: 'Deathstar',
+    position: 'Head of Deathstar',
   }, function() {
       console.log('finished populating users');
     }

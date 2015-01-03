@@ -17,7 +17,7 @@
 			            <i  ng-class="hasRead(anouncement.read)" ng-click="detail(anouncement.slug)"></i>
 			        </div>
 			        <div class="row-content">
-			            <div class="least-content"><span am-time-ago="anouncement.created_at"></span><p><button class=""><i class="fa fa-trash" ng-click="trash($index)"></i></button><button class="" ng-click="edit($index)"><i class="fa fa-edit"></i></button></p></div>
+			            <div class="least-content"><span am-time-ago="anouncement.created_at"></span><p><button class="btn btn-danger btn-xs"><i class="fa fa-trash" ng-click="trash($index)"></i></button><button class="btn btn-info btn-xs" ng-click="edit($index)"><i class="fa fa-edit"></i></button></p></div>
 			            <h4 class="list-group-item-heading" ng-click="detail(anouncement.slug)">{{ anouncement.title }}</h4>
 			            <p class="list-group-item-text" ng-click="detail(anouncement.slug)">{{ anouncement.teaser }}</p>
 			        </div>

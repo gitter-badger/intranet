@@ -111,6 +111,15 @@
 .sidebar-nav li {
     text-indent: 20px;
     line-height: 40px;
+    border-left: 4px solid #009587;
+}
+
+.sidebar-nav li:hover,
+.sidebar-nav li:active,
+.sidebar-nav li:focus {
+    text-indent: 20px;
+    line-height: 40px;
+    border-left: 4px solid #ff5722;
 }
 
 .sidebar-nav li a {
