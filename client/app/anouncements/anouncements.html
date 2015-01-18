@@ -1,29 +1,68 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-        
-<div id="page-content-wrapper">
+<div ng-include="'components/navbar/header.html'" class="app-header navbar"></div>
+<div ng-include="'components/navbar/navbar.html'" class="app-aside hidden-xs {{app.settings.asideColor}}"></div>
 
-    <div class="row">
-      <div class="col-md-6">
-        <h3>Anouncements</h3>
-      </div>  
-    </div>
+<div class="app-content">
+    <div ui-butterbar></div>
+    <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside" ></a>
+    <div class="app-content-body fade-in-up">
 
-    <div class="row">
+        <div class="col">
+            <div class="bg-light lter b-b wrapper-md">
+              <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                  <h1 class="m-n font-thin h3 text-black">Anouncements</h1>
+                  <small class="text-muted">All ancouncements</small>
+                </div>
+                <div class="col-sm-6 text-right hidden-xs">
+                  <div class="btn-group">
+                    <button ng-show="isAdmin()" ng-click="newAnouncement()" class="btn btn-danger font-bold">New Anouncement</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wrapper-md">
+                <div class="row">
         <div class="col-md-12">
 
-    	  	<div class="list-group" dir-paginate="anouncement in anouncements | itemsPerPage: 10">
-			    <div class="list-group-item" >
-			        <div class="row-action-primary">
-			            <i  ng-class="hasRead(anouncement.read)" ng-click="detail(anouncement.slug)"></i>
-			        </div>
-			        <div class="row-content">
-			            <div class="least-content"><span am-time-ago="anouncement.created_at"></span><p><button class="btn btn-danger btn-xs"><i class="fa fa-trash" ng-click="trash($index)"></i></button><button class="btn btn-info btn-xs" ng-click="edit($index)"><i class="fa fa-edit"></i></button></p></div>
-			            <h4 class="list-group-item-heading" ng-click="detail(anouncement.slug)">{{ anouncement.title }}</h4>
-			            <p class="list-group-item-text" ng-click="detail(anouncement.slug)">{{ anouncement.teaser }}</p>
-			        </div>
-			    </div>
-			    <div class="list-group-separator"></div>
-			</div>
+            <div class="panel panel-default">
+    <div class="panel-heading">
+      Anouncements
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-striped b-t b-light" ng-table template-pagination="custom/pager">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Teaser</th>
+            <th>Date</th>
+            <th>Read?</th>
+            <th colspan="2" ng-show="isAdmin()" style="width:15px;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="anouncement in anouncements">
+            <td ng-click="detail(anouncement.slug)" >{{ anouncement.title }}</td>
+            <td ng-click="detail(anouncement.slug)">{{ anouncement.teaser }}</td>
+            <td ng-click="detail(anouncement.slug)"><span am-time-ago="anouncement.created_at"></span></td>
+            <td>
+              <a href="" class="active"><i ng-class="hasRead(anouncement.read)"></i></a>
+            </td>
+            <td ng-show="isAdmin()" style="width:10px;">
+                <button class="btn btn-sm btn-info" ng-click="edit($index)"><i class="fa fa-edit"></i></button>
+            </td>
+            <td ng-show="isAdmin()" style="width:10px;">
+                <button class="btn btn-sm btn-danger"><i class="fa fa-trash" ng-click="trash($index)"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+    
           
             
 
@@ -32,11 +71,23 @@
         
 
     </div>
-    <div class="row">
-    	<div class="col-md-12">
-    		<dir-pagination-controls boundary-links="true" template-url="../../bower_components/angular-utils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
-    	</div>
+
+
+            </div>
+        </div>
+
+    
     </div>
+</div>
+
+
+
+
+        
+
+
+    </div>
+
 
     
 
@@ -46,6 +97,25 @@
   <a href="/anouncements/new" class="btn btn-danger btn-fab btn-raised mdi-content-add"><div class="ripple-wrapper"></div></a>
 </div>
 
+
+<script type="text/ng-template" id="custom/pager">
+        <ul class="pager ng-cloak">
+          <li ng-repeat="page in pages"
+                ng-class="{'disabled': !page.active, 'previous': page.type == 'prev', 'next': page.type == 'next'}"
+                ng-show="page.type == 'prev' || page.type == 'next'" ng-switch="page.type">
+            <a ng-switch-when="prev" ng-click="params.page(page.number)" href="">&laquo; Previous</a>
+            <a ng-switch-when="next" ng-click="params.page(page.number)" href="">Next &raquo;</a>
+          </li>
+            <li> 
+            <div class="btn-group">
+                <button type="button" ng-class="{'active':params.count() == 10}" ng-click="params.count(10)" class="btn btn-default">10</button>
+                <button type="button" ng-class="{'active':params.count() == 25}" ng-click="params.count(25)" class="btn btn-default">25</button>
+                <button type="button" ng-class="{'active':params.count() == 50}" ng-click="params.count(50)" class="btn btn-default">50</button>
+                <button type="button" ng-class="{'active':params.count() == 100}" ng-click="params.count(100)" class="btn btn-default">100</button>
+            </div>
+            </li>
+        </ul>
+</script>
 
 
 

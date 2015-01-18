@@ -1,6 +1,109 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-include="'components/navbar/header.html'" class="app-header navbar"></div>
+<div ng-include="'components/navbar/navbar.html'" class="app-aside hidden-xs {{app.settings.asideColor}}"></div>
+
+
+
+<div class="app-content">
+    <div ui-butterbar></div>
+    <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside" ></a>
+    <div class="app-content-body fade-in-up">
         
-<div id="page-content-wrapper">
+
+        <div class="col">
+            <div class="bg-light lter b-b wrapper-md">
+              <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                  <h1 class="m-n font-thin h3 text-black">Dashboard</h1>
+                  <small class="text-muted">Fast overview</small>
+                </div>
+                <div class="col-sm-6 text-right hidden-xs">
+                  
+                </div>
+              </div>
+            </div>
+            <div class="wrapper-md">
+                <div class="row">
+                    <div class="col-md-4">
+          
+                        <div class="panel panel-success ">
+                            <div class="panel-heading ">
+                                <span class="badge bg-success pull-right">{{ totalanouncements }}</span>
+                                <h3 class="panel-title">Unread Anouncements </h3>
+
+                            </div>
+                            <div class="panel-body" style="height:210px ;overflow-y: scroll;">
+                                
+                                <div class="media" ng-show="anouncements.length > 0" ng-repeat="anouncement in anouncements">
+                                    <span class="pull-left thumb-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                                    <div class="media-body" ng-click="readAnouncement(anouncement.slug)">
+                                      <div class="pull-right text-center text-muted">
+                                        <strong class="h4">{{ anouncement.created_at | date:'dd' }}</strong><br>
+                                        <small class="label bg-light">{{ anouncement.created_at | date:'MMM' }}</small>
+                                      </div>
+                                      <a href="" class="h4">{{ anouncement.title }}</a>
+                                      <small class="block"><a href="" class="">{{ anouncement.author}}</a></small>
+                                      <small class="block m-t-sm">{{ anouncement.teaser}}</small>
+                                    </div>
+                                  </div>
+
+                                
+                                <p class="text-center" ng-show="anouncements.length == 0">No new anouncements</p>
+                                
+
+                            </div>
+                            <div class="panel-footer">
+                                <a href="/anouncements">All anouncements</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+          
+                        <div class="panel panel-info">
+                            <div class="panel-heading ">
+                                <h3 class="panel-title">Today's Birthdays</h3>
+
+                            </div>
+                            <ul ng-show="birthdays.length > 0" class="list-group list-group-lg no-bg auto" style="height:210px ;overflow-y: scroll;">
+                              <li class="list-group-item clearfix" ng-repeat="birthday in birthdays" ng-click="readbirthday(birthday.slug)">
+                                <span class="pull-left thumb-sm avatar ">
+                                  <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" alt="">
+                                  <i class="on b-white bottom"></i>
+                                </span>
+                                <span class="clear">
+                                  <span>{{ birthday.firstname }}</span>
+                                  <small class="text-muted clear text-ellipsis">born <span am-time-ago="birthday.dob"></span></small>
+                                </span>
+                              </li>
+                            </ul>
+                            <ul ng-show="birthdays.length == 0" class="list-group list-group-lg no-bg auto" style="height:210px ;overflow-y: scroll;">
+                                <li class="list-group-item clearfix">
+                                    <p class="text-center" ng-show="birthdays.length == 0">No cake today =( </p>
+                                </li>
+                            </ul>
+                            <div class="panel-footer">
+                                <a href="/team">Team</a>
+                            </div>
+                
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+        
+<!-- <div id="page-content-wrapper">
 
     <div class="row">
       <div class="col-md-6">
@@ -9,34 +112,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4">
-          
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Anouncements <div class="pull-right"><div class="pill"> {{ totalanouncements }}</div></div></h3>
-
-                </div>
-                <div class="panel-body">
-
-                    <div class="list-group" ng-show="anouncements.length > 0" style="margin-bottom: 0px">
-                        <div class="list-group-item" ng-repeat="anouncement in anouncements">
-                            <div class="row-content" ng-click="readAnouncement(anouncement.slug)" style="min-height:10px">
-                                <div class="least-content"><span am-time-ago="anouncement.created_at"></span></div>
-                                <h4 class="list-group-item-heading" style="font-size:18px">{{ anouncement.title }}</h4>
-                                
-                            </div>
-                            <div class="dashboard-list-separator" ng-show="showSeparatorAnouncements($index)"></div>
-                        </div>
-                        
-                        
-                    </div>
-                    <p class="text-center" ng-show="anouncements.length == 0">Nothing to read</p>
-                    
-
-                </div>
-            </div>
-
-        </div>
+        
 
         <div class="col-md-4">
           
@@ -89,7 +165,7 @@
 
     </div>
 
-</div>
+</div> -->
 
 
 

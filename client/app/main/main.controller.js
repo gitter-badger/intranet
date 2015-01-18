@@ -30,6 +30,7 @@ angular.module('intranetApp')
     $scope.filterAnouncements = function(items){
       _.each(items, function(value,index){
         if(!$scope.hasRead(value.read)){
+          
           $scope.anouncements.push(value);
 
         }

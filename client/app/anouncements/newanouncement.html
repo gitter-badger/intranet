@@ -1,56 +1,80 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-        
-<div id="page-content-wrapper">
-  <div class="row">
-    <div class="col-md-6">
-      <h3>New Anouncement</h3>
+<div ng-include="'components/navbar/header.html'" class="app-header navbar"></div>
+<div ng-include="'components/navbar/navbar.html'" class="app-aside hidden-xs {{app.settings.asideColor}}"></div>
+
+<div class="app-content">
+    <div ui-butterbar></div>
+    <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside" ></a>
+    <div class="app-content-body fade-in-up">
+
+        <div class="col">
+            <div class="bg-light lter b-b wrapper-md">
+              <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                  <h1 class="m-n font-thin h3 text-black">New Anouncement</h1>
+                  <small class="text-muted">Write a new anouncement</small>
+                </div>
+                <div class="col-sm-6 text-right hidden-xs">
+                  <div class="btn-group">
+                    <button ng-show="isAdmin()" ng-click="newAnouncement()" class="btn btn-danger font-bold">New Anouncement</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wrapper-md">
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <form class="form-horizontal">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="title" class="col-lg-2 control-label">Title</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="title" placeholder="Title" ng-model="anouncement.title">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="teaser" class="col-lg-2 control-label">Teaser</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="teaser" placeholder="Teaser" ng-model="anouncement.teaser">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="textArea" class="col-lg-2 control-label">Body</label>
+                                <div class="col-lg-10">
+                                    <text-angular ng-model="anouncement.text"></text-angular>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-2">
+                                  
+                                </div>  
+                                <div class="col-lg-10">
+                                    <label class="i-checks">
+                                        <input ng-model="anouncement.active" type="checkbox"><i></i> Active?
+                                    </label>
+                                  
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-3 col-md-offset-9 col-sm-5 col-sm-offset-7 col-lg-3 col-lg-offset-9">
+                                    <button class="btn btn-default">Cancel</button>
+                                    <button type="submit" class="btn btn-primary" ng-click="submit()">Submit</button>
+                                </div>
+                            </div>
+                            
+                        </fieldset>
+                    </form>
+
+                      
+                    </div>
+                  </div>
+
+
+
+            </div>
+        </div>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <form class="form-horizontal">
-        <fieldset>
-            <div class="form-group">
-                <label for="title" class="col-lg-2 control-label">Title</label>
-                <div class="col-lg-10">
-                    <input type="text" class="form-control" id="title" placeholder="Title" ng-model="anouncement.title">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="teaser" class="col-lg-2 control-label">Teaser</label>
-                <div class="col-lg-10">
-                    <input type="text" class="form-control" id="teaser" placeholder="Teaser" ng-model="anouncement.teaser">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="textArea" class="col-lg-2 control-label">Body</label>
-                <div class="col-lg-10">
-                    <text-angular ng-model="anouncement.text"></text-angular>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-2">
-                  
-                </div>  
-                <div class="col-lg-10">
-                  <md-checkbox md-no-ink aria-label="Activate Anouncement" ng-model="anouncement.active" class="md-primary">
-                    Active?
-                  </md-checkbox>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-3 col-md-offset-9 col-sm-5 col-sm-offset-7 col-lg-3 col-lg-offset-9">
-                    <button class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-primary" ng-click="submit()">Submit</button>
-                </div>
-            </div>
-            
-        </fieldset>
-    </form>
-
-      
-    </div>
-  </div>
 </div>
+
+        

@@ -1,13 +1,29 @@
 'use strict';
 
 angular.module('intranetApp')
-  .controller('AnouncementsCtrl', function ($scope,Anouncement,socket,$location,Auth) {
+  .controller('AnouncementsCtrl', function ($scope,Anouncement,socket,$location,Auth, ngTableParams) {
 
-
+    $scope.isAdmin = Auth.isAdmin;
+    
     $scope.anouncements = Anouncement.query(function(){
-    	socket.syncUpdates('anouncement', $scope.anouncements);
+      socket.syncUpdates('anouncement', $scope.anouncements);
     });
 
+
+    $scope.tableParams = new ngTableParams({
+        page: 1,            // show first page
+        count: 10           // count per page
+    }, {
+        total: $scope.anouncements, // length of data
+        getData: function($defer, params) {
+            $defer.resolve($scope.anouncements.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+        }
+    });
+
+    
+    $scope.newAnouncement = function(){
+      $location.path( "/anouncements/new");
+    }
 
     $scope.detail = function(slug){
     	$location.path( "/anouncements/"+slug );
@@ -21,7 +37,7 @@ angular.module('intranetApp')
     			has = true;
     		}
     	});
-    	var icon = (has === true) ? 'mdi-action-done' : 'mdi-action-info';
+    	var icon = (has === true) ? 'fa fa-check text-success text-active' : 'fa fa-times text-danger text-active';
     	return icon;
     };
 
@@ -54,11 +70,20 @@ angular.module('intranetApp')
   		$scope.anouncement = response;
   	})
 
+    $scope.edit = function(){
+      
+        $location.path('/anouncements/'+$scope.anouncement.slug+'/edit');
+      
+    }
+
   })
   .controller('AnouncementEditCtrl', function($scope, Anouncement, $location, $routeParams){
 
     $scope.anouncement = Anouncement.get({ id: $routeParams.slug });
 
+    $scope.cancel = function(){
+      $location.path('/anouncements/'+$scope.anouncement.slug);
+    }
 
     $scope.submit = function(){
       if($scope.anouncement.title.length < 5){

@@ -1,0 +1,18 @@
+<!-- list -->
+<ul class="nav" ng-controller="NavbarCtrl">
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span>Navigation</span>
+  </li>
+ 
+  <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+    <a ng-href="{{ item.link }}">
+      <b ng-show="item.count" class="badge bg-warning pull-right">{{ item.count }}</b>
+      <i class="glyphicon {{ item.icon }} icon {{ item.color }}"></i>
+      <span class="font-bold" >{{ item.title }}</span>
+    </a>
+  </li>
+
+
+
+</ul>
+<!-- / list -->

@@ -1,16 +1,18 @@
 'use strict';
 
 angular.module('intranetApp', [
+  'ngAnimate',
   'ngCookies',
   'ngResource',
   'ngSanitize',
   'ngRoute',
   'btford.socket-io',
   'ui.bootstrap',
-  'ngMaterial',
   'angularMoment',
   'angularUtils.directives.dirPagination',
-  'textAngular'
+  'textAngular',
+  'ui.utils',
+  'ngTable'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

@@ -1,28 +1,80 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-include="'components/navbar/header.html'" class="app-header navbar"></div>
+<div ng-include="'components/navbar/navbar.html'" class="app-aside hidden-xs {{app.settings.asideColor}}"></div>
 
-<div id="page-content-wrapper">
+<div class="app-content">
+    <div ui-butterbar></div>
+    <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside" ></a>
+    <div class="app-content-body fade-in-up">
+        
 
-	<div class="row">
-		<div class="col-md-4" ng-repeat="member in members">
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-xs-4 col-sm-4 col-md-4">
-							<img ng-src="{{member.img}}" alt="..." class="img-rounded" style="max-width:80px;width:99%">
-						</div>
-						<div class="col-xs-8 col-sm-8 col-md-8">
-							<ul class="list-group">
-								<li class="list-group-item"><span class="text-info">First name:</span> {{ member.firstname }}</li>
-								<li class="list-group-item"><span class="text-info">Surname:</span> {{ member.surname }}</li>
-								<li class="list-group-item">&nbsp</li>
-								<li class="list-group-item"><span class="text-warning">Department:</span> {{ member.department }}</li>
-								<li class="list-group-item"><span class="text-warning">Position:</span> {{ member.position }}</li>
-							</ul>
+        <div class="col">
+			<div class="bg-light lter b-b wrapper-md">
+	          <div class="row">
+	            <div class="col-sm-6 col-xs-12">
+	              <h1 class="m-n font-thin h3 text-black">Team</h1>
+	              <small class="text-muted">All our team members</small>
+	            </div>
+	            <div class="col-sm-6 text-right hidden-xs">
+	              
+	            </div>
+	          </div>
+	        </div>
+	        <div class="wrapper-md">
+				<div class="row">
+					<div class="col-md-4" ng-repeat="member in members">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+							  <div class="clearfix">
+							    <a href="" class="pull-left thumb-md avatar b-3x m-r">
+							      <img ng-src="{{ member.img }}" alt="">
+							    </a>
+							    <div class="clear">
+							      <div class="h3 m-t-xs m-b-xs">
+							        {{ member.firstname }} {{ member.surname }}
+							      </div>
+							      <small class="text-muted">{{ member.position }}</small>
+							    </div>
+							  </div>
+							</div>
+							<div class="list-group no-radius alt">
+							  <a class="list-group-item" href="">
+							    <i class="fa fa-comment fa-briefcase text-muted"></i> 
+							    Department:
+							    <span class="label text-base bg-light pos-rlt m-r"><i class="arrow right arrow-light"></i> {{ member.department }}</span>
+							     
+							  </a>
+							  <a class="list-group-item" href="">
+							    <i class="fa fa-phone text-muted"></i> 
+							    Phone: 
+							    <span class="label text-base bg-light pos-rlt m-r"><i class="arrow right arrow-light"></i> {{ member.phone }}</span>
+							  </a>
+							  <a class="list-group-item" href="">
+							    <i class="fa fa-mobile-phone text-muted"></i> 
+							    Mobile: 
+							    <span class="label text-base bg-light pos-rlt m-r"><i class="arrow right arrow-light"></i> {{ member.mobile }}</span>
+							  </a>
+							  <a class="list-group-item" href="">
+							    <i class="fa fa-birthday-cake text-muted"></i> 
+							    Birthday: 
+							    <span class="label text-base bg-light pos-rlt m-r"><i class="arrow right arrow-light"></i> {{ member.dob | amDateFormat:'MMMM Do YYYY' }}</span> 
+							  </a>
+							  <a class="list-group-item" href="">
+							    <i class="fa fa-facebook text-muted"></i> 
+							    Social: 
+								<button ng-click="gototwitter(member.twitter)" class="btn btn-rounded btn-sm btn-icon btn-default" ng-show="member.twitter"><i class="fa fa-twitter"></i></button>
+								<button ng-click="gotofacebook(member.facebook)" class="btn btn-rounded btn-sm btn-icon btn-default" ng-show="member.facebook"><i class="fa fa-facebook"></i></button>
+								<button ng-click="gotoxing(member.xing)" class="btn btn-rounded btn-sm btn-icon btn-default" ng-show="member.xing"><i class="fa fa-xing"></i></button>
+								<button ng-click="gotolinkedin(member.linkedin)" class="btn btn-rounded btn-sm btn-icon btn-default" ng-show="member.linkedin"><i class="fa fa-linkedin"></i></button>
+									
+								 
+							  </a>
+							  
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
+	        </div>
 
+        </div>
+    </div>
 </div>
