@@ -11,5 +11,7 @@
   "undef": true,
   "smarttabs": true,
   "asi": true,
-  "debug": true
+  "debug": true,
+  "unused" : true,
+  "quotmark" : true,
 }
