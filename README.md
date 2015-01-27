@@ -3,13 +3,13 @@
 
 *Simple intranet for companies*
 
-Documentation will be available [here](http://khwerhahn.github.io/intranet/)
+Demo: [heroku](https://secure-ridge-1430.herokuapp.com/)
 
 _Anyone who would like to join is more than welcome!_
 
 
 ## Features
-1. Slag company Chat 
+1. Slag company Chat
 
  Use the [slag API](https://api.slack.com/) to connect to the "general" chat of the company 
 2. Jira Roadmap
@@ -23,7 +23,7 @@ _Anyone who would like to join is more than welcome!_
  Self explanitory
 5. Timeline
 
- A company timeline of employees joined and left
+ A company timeline of employees joined and left. Add pictures and important company milestones
 6. Reading List
 
  Articles that everyone should read
@@ -35,7 +35,7 @@ _Anyone who would like to join is more than welcome!_
  Who is out of house
 9. Conference rooms
 
- Availability of company conference rooms
+ Availability of company conference rooms. (Sync with Exchange server)
 
 ## Build with
 * Angular JS
